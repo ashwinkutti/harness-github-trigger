@@ -5,7 +5,7 @@ trigger:
   description: Trigger pipeline on GitHub push to main branch
   tags: {}
   orgIdentifier: my_org
-  projectIdentifier: my_project
+  projectIdentifier: saran-test
   pipelineIdentifier: github_trigger_full_example
   source:
     type: Webhook
