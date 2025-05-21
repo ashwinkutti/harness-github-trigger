@@ -1,0 +1,22 @@
+trigger:
+  name: GitHub Push Trigger
+  identifier: github_push_trigger
+  enabled: true
+  description: Trigger pipeline on GitHub push to main branch
+  tags: {}
+  orgIdentifier: my_org
+  projectIdentifier: my_project
+  pipelineIdentifier: github_trigger_full_example
+  source:
+    type: Webhook
+    spec:
+      type: GitHub
+      spec:
+        type: Push
+        spec:
+          actions: [Create, Update]
+          branches:
+            operator: Equals
+            values:
+              - main
+  inputYaml: ""

@@ -1,0 +1,30 @@
+pipeline:
+  name: GitHub Trigger Full Example
+  identifier: github_trigger_full_example
+  projectIdentifier: my_project
+  orgIdentifier: my_org
+  tags: {}
+  stages:
+    - stage:
+        name: Clone and Build
+        identifier: Clone_and_Build
+        type: CI
+        spec:
+          cloneCode: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s_connector
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Commit Info
+                  identifier: echo_commit
+                  spec:
+                    shell: Bash
+                    command: |
+                      echo "Triggered by commit: $HARNESS_GIT_COMMIT_MESSAGE"
+                      echo "Branch: $HARNESS_GIT_BRANCH"
