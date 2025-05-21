@@ -1,0 +1,30 @@
+pipeline:
+  name: test
+  identifier: test
+  projectIdentifier: sarantest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Clone Repo
+        identifier: Clone_Repo
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Harness
+                      spec:
+                        file: account:/test.sh
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
